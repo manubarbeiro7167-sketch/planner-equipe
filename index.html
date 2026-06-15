@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner · Equipe</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 1.8em; }
+        .container { max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .column { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .column-header { font-size: 1.1em; font-weight: 600; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f2f5; }
+        .todo .column-header { color: #e74c3c; border-color: #e74c3c; }
+        .in-progress .column-header { color: #f39c12; border-color: #f39c12; }
+        .done .column-header { color: #27ae60; border-color: #27ae60; }
+        .task { background: #f8f9fa; border-radius: 8px; padding: 12px; margin-bottom: 10px; cursor: grab; border-left: 4px solid #ddd; }
+        .task:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .task-title { font-weight: 600; font-size: 0.95em; margin-bottom: 5px; }
+        .task-desc { font-size: 0.85em; color: #666; margin-bottom: 8px; }
+        .task-meta { display: flex; justify-content: space-between; align-items: center; }
+        .assignee { background: #667eea; color: white; border-radius: 20px; padding: 2px 10px; font-size: 0.75em; }
+        .priority { font-size: 0.75em; padding: 2px 8px; border-radius: 20px; }
+        .priority.high { background: #fde8e8; color: #e74c3c; }
+        .priority.medium { background: #fef3cd; color: #f39c12; }
+        .priority.low { background: #d4edda; color: #27ae60; }
+        .add-task { background: none; border: 2px dashed #ddd; border-radius: 8px; padding: 10px; width: 100%; cursor: pointer; color: #999; font-size: 0.9em; }
+        .add-task:hover { border-color: #667eea; color: #667eea; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat { background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); text-align: center; }
+        .stat-num { font-size: 2em; font-weight: 700; color: #667eea; }
+        .stat-label { font-size: 0.85em; color: #666; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Planner · Equipe</h1>
+        <div>Bem-vindo, manubarbeiro</div>
+    </div>
+    <div class="container">
+        <div class="stats">
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">A Fazer</div></div>
+            <div class="stat"><div class="stat-num">2</div><div class="stat-label">Em Progresso</div></div>
+            <div class="stat"><div class="stat-num">4</div><div class="stat-label">Concluído</div></div>
+            <div class="stat"><div class="stat-num">9</div><div class="stat-label">Total de Tarefas</div></div>
+        </div>
+        <div class="board">
+            <div class="column todo">
+                <div class="column-header">🔴 A Fazer (3)</div>
+                <div class="task" style="border-left-color: #e74c3c;">
+                    <div class="task-title">Revisar relatório mensal</div>
+                    <div class="task-desc">Análise dos dados de desempenho da equipe</div>
+                    <div class="task-meta">
+                        <span class="assignee">Ana Silva</span>
+                        <span class="priority high">Alta</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #f39c12;">
+                    <div class="task-title">Reunião de planejamento</div>
+                    <div class="task-desc">Definir metas para o próximo trimestre</div>
+                    <div class="task-meta">
+                        <span class="assignee">Carlos M.</span>
+                        <span class="priority medium">Média</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #27ae60;">
+                    <div class="task-title">Atualizar documentação</div>
+                    <div class="task-desc">Revisar e atualizar guias de processo</div>
+                    <div class="task-meta">
+                        <span class="assignee">Julia R.</span>
+                        <span class="priority low">Baixa</span>
+                    </div>
+                </div>
+                <button class="add-task">+ Adicionar tarefa</button>
+            </div>
+            <div class="column in-progress">
+                <div class="column-header">🟡 Em Progresso (2)</div>
+                <div class="task" style="border-left-color: #f39c12;">
+                    <div class="task-title">Desenvolvimento da feature X</div>
+                    <div class="task-desc">Implementação do novo módulo de relatórios</div>
+                    <div class="task-meta">
+                        <span class="assignee">Pedro L.</span>
+                        <span class="priority high">Alta</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #667eea;">
+                    <div class="task-title">Análise de mercado</div>
+                    <div class="task-desc">Pesquisa sobre concorrentes e tendências</div>
+                    <div class="task-meta">
+                        <span class="assignee">Mariana F.</span>
+                        <span class="priority medium">Média</span>
+                    </div>
+                </div>
+                <button class="add-task">+ Adicionar tarefa</button>
+            </div>
+            <div class="column done">
+                <div class="column-header">🟢 Concluído (4)</div>
+                <div class="task" style="border-left-color: #27ae60; opacity: 0.7;">
+                    <div class="task-title">✅ Configurar ambiente</div>
+                    <div class="task-desc">Setup do ambiente de desenvolvimento</div>
+                    <div class="task-meta">
+                        <span class="assignee">Ana Silva</span>
+                        <span class="priority low">Baixa</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #27ae60; opacity: 0.7;">
+                    <div class="task-title">✅ Onboarding novos membros</div>
+                    <div class="task-desc">Integração de 2 novos colaboradores</div>
+                    <div class="task-meta">
+                        <span class="assignee">Carlos M.</span>
+                        <span class="priority medium">Média</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #27ae60; opacity: 0.7;">
+                    <div class="task-title">✅ Deploy v2.0</div>
+                    <div class="task-desc">Lançamento da versão 2.0 em produção</div>
+                    <div class="task-meta">
+                        <span class="assignee">Pedro L.</span>
+                        <span class="priority high">Alta</span>
+                    </div>
+                </div>
+                <div class="task" style="border-left-color: #27ae60; opacity: 0.7;">
+                    <div class="task-title">✅ Auditoria de segurança</div>
+                    <div class="task-desc">Revisão completa de vulnerabilidades</div>
+                    <div class="task-meta">
+                        <span class="assignee">Julia R.</span>
+                        <span class="priority high">Alta</span>
+                    </div>
+                </div>
+                <button class="add-task">+ Adicionar tarefa</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
